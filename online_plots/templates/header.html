@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<html>
+<body>
+<table  align="center" cellspacing="5" bgcolor="green"  style="border-radius: 4px; width: 100%;">
+    <tr><th colspan="8"><img src="{% static 'images/plot for sale.jpg' %}"width="200"height="250" style=" border-radius: 10px;"></th></tr>
+    <tr style="background: white;height: 10px" >
+        <th style=" border-radius: 2px;"><a href="{% url 'index' %}" style="text-decoration: none;">HOME</a></th>
+        <th>
+        <select style="width: 100%"  onchange="f1(this.value)">
+            <option selected hidden>PLOTS</option>
+            <option value="{% url 'newplot' %}" ><a>NEW PLOT</a></option>
+            <option value="{% url 'editplot' %}">EDIT PLOT</option>
+            <option value="{% url 'viewplot' %}">VIEW PLOT</option>
+        </select>
+        </th>
+        <th>
+        <select style="width: 100%" onchange="f1(this.value)">
+            <option selected hidden>APPARTMENTS</option>
+            <option value="{% url 'newapp' %}">NEW APPARTMENT</option>
+            <option value="{% url 'editapp' %}">EDIT APPARTMENT</option>
+            <option value="{% url 'viewapp' %}">VIEW APPARTMENT</option>
+        </select>
+        </th>
+        <th>
+        <select style="width: 100%" onchange="f1(this.value)">
+            <option selected hidden>SALES</option>
+            <option value="{% url 'sales' %}" >SALES</option>
+            <option value="{% url 'payments' %}">PAYMENTS</option>
+            <option value="{% url 'reports' %}">REPORTS</option>
+        </select>
+        </th>
+        <th>
+        <select style="width: 100%" onchange="f1(this.value)">
+            <option selected hidden>EMPLOYEES</option>
+            <option value="{% url 'addemp' %}">ADD EMPLOYEE</option>
+            <option value="{% url 'viewemp' %}">VIEW EMPLOYEE</option>
+        </select>
+        </th>
+        <th>
+        <select style="width: 100%" onchange="f1(this.value)">
+            <option selected hidden>REPORTS</option>
+            <option value="{% url 'soldplots' %}">SOLD PLOTS</option>
+            <option value="{% url 'resplots' %}">RESERVED PLOTS</option>
+            <option value="{% url 'vacantplots' %}">VACANT PLOTS</option>
+        </select>
+        </th>
+        <th><a href="{% url 'about' %}">ABOUT</a></th>
+        <th><a href="{% url 'login' %}">LOGOUT</a></th>
+    </tr>
+
+</table>
+<style>
+    th{
+        border-radius: 2px;
+    }
+    a{
+        border-radius: 2px;
+        color: green;
+        font-size: 14px;
+      }
+    select {
+        color: green;
+        font-size: 13px;
+        width: 100%;
+        text-align-last: center;
+        border: 0px;
+    }
+
+</style>
+<script>
+    function f1(src) {
+window.location=src;
+    }
+</script>
+</body>
+</html>

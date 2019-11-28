@@ -1,0 +1,69 @@
+{% include 'header.html' %}
+<html>
+<body>
+
+    {% if specific.plot %}
+    <table align="center" width="100" border="1" cellpadding="4">
+    <tr><th>plotno </th>
+        <th>roadno</th>
+        <th>surveyno</th>
+        <th>cost_p_sqyard</th>
+        <th>total_sqyard</th>
+        <th>other_exp</th>
+        <th>facing</th>
+        <th>status</th>
+        <th>total cost</th>
+        <th>image</th>
+        </tr>
+    {%  for i in specific.plot %}
+        <tr>
+            <th>{{ i.plotno }}</th>
+            <th>{{ i.roadno }}</th>
+            <th>{{ i.surveyno }}</th>
+            <th>{{ i.cost_p_sqyard }}</th>
+            <th>{{ i.total_sqyard }}</th>
+            <th>{{ i.other_exp }}</th>
+            <th>{{ i.facing }}</th>
+            <th>{{ i.status }}</th>
+            <th>{{ i.total_cost }}</th>
+            <th>{{ i.image }}</th>
+       </tr>
+    {% endfor %}
+    </table>
+        {% endif %}
+
+
+    {% if specific.app %}
+    <table align="center" width="100" border="1" cellpadding="4">
+        <tr><th>plotno </th>
+        <th>roadno</th>
+        <th>surveyno</th>
+        <th>cost_p_sqyard</th>
+        <th>total_sqyard</th>
+        <th>other_exp</th>
+        <th>facing</th>
+        <th>status</th>
+        <th>total cost</th>
+        <th>image</th>
+        </tr>
+    {% for i in specific.app %}
+        <tr>
+            <th>{{ i.appno }}</th>
+            <th>{{ i.floorno }}</th>
+            <th>{{ i.surveyno }}</th>
+            <th>{{ i.cost_p_sqyard }}</th>
+            <th>{{ i.total_sqyard }}</th>
+            <th>{{ i.other_exp }}</th>
+            <th>{{ i.facing }}</th>
+            <th>{{ i.status }}</th>
+            <th>{{ i.total_cost }}</th>
+            <th>{{ i.image }}</th>
+        </tr>
+
+    {% endfor %}
+        </table>
+    {% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+<html>
+<body>
+<h1 align="center" style=color:blue;"margin-top:100px">welcome to online homes</h1>
+{% if saveplot %}
+    <h1 align="center" >{{ saveplot }}</h1>
+{% endif %}
+
+
+{% if saveapp %}
+    <h1 align="center" >{{ saveapp }}</h1>
+{% endif %}
+
+
+{% if saveemp %}
+    <h1 align="center" >{{ saveemp }}</h1>
+{% endif %}
+
+
+
+{% if delplot %}
+    <h1 align="center" >{{ delplot }}</h1>
+{% endif %}
+
+
+{% if delemp %}
+        <h1 align="center" >{{ delemp }}</h1>
+{% endif %}
+
+{% if delapp %}
+            <h1 align="center" >{{ delapp }}</h1>
+{% endif %}
+</body>
+</html>

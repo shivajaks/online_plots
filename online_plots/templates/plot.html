@@ -1,0 +1,86 @@
+{% include 'header.html' %}
+<html>
+<body>
+<div class="container" style=" margin-top: 50px">
+{% if newplot %}
+<table  align="center">
+<form action="{% url 'saveplot' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<tr><th colspan="2" align="left">New Plot Registration<br><br/></th></tr>
+<tr><td>Plotno:</td><th><input type="number" name="ta1"></th></tr>
+<tr><td>Roadno:</td><th><input type="number" name="ta2"></th></tr>
+<tr><td>Surveyno:</td><th><input type="number" name="ta3"></th></tr>
+<tr><td>Cost per sq yard:</td><th><input id="i1" type="number" name="ta4" onkeyup="fun()"></th></tr>
+<tr><td>Total sq yard:</td><th><input id="i2" type="number" name="ta5" onkeyup="fun()"></th></tr>
+<tr><td>Other expences:</td><th><input id="i3" type="number" name="ta6" onkeyup="fun()"></th></tr>
+<tr><td>Facing:</td><th><select  name="ta7">
+                              <option>North</option>
+                              <option>South</option>
+                              <option>East</option>
+                              <option>West</option>
+                         </select></th></tr>
+<tr><td>Status:</td><th><select  name="ta8">
+                              <option>Sold</option>
+                              <option>Reserved</option>
+                              <option>Vacant</option>
+                         </select></th></tr>
+<tr><td>Total cost:</td><th><input id="i4" type="number" name="ta9"></th></tr>
+<tr><td>Upload image:</td><th><input type="file" name="ta10" style="width:70%;"></th></tr>
+    <tr><td align="right" colspan="2"><input type="submit" value="save" style="background: green;border-color: green;width: 25%"></td></tr>
+    </form>
+</table>
+    <style>
+    select{
+        width:100%;
+    }
+    </style>
+
+{% endif %}
+
+
+
+
+{% if editplot %}
+<h3 align="center"style="color: blue"> Welcome to Edit Plot </h3>
+{% endif %}
+
+
+
+
+{% if viewplot %}
+<table align="center" width="100" border="2" cellpadding="4" >
+    <tr><th>plotno </th>
+        <th>roadno</th>
+        <th>surveyno</th>
+        <th>cost_p_sqyard</th>
+        <th>total_sqyard</th>
+        <th>other_exp</th>
+        <th>facing</th>
+        <th>status</th>
+        <th>total cost</th>
+        <th>image</th>
+        <th>delete</th></tr>
+{% for x in viewplot %}
+    <tr><th>{{ x.plotno }}</th>
+        <th>{{ x.roadno }}</th>
+        <th>{{ x.surveyno }}</th>
+        <th>{{ x.cost_p_sqyard }}</th>
+        <th>{{ x.total_sqyard }}</th>
+        <th>{{ x.other_exp }}</th>
+        <th>{{ x.facing }}</th>
+        <th>{{ x.status }}</th>
+        <th>{{ x.total_cost }}</th>
+        <th><img src="{{ x.image.url }}" width="75" height="75"> </th>
+        <th><a href="{% url 'delplot'  %}?plotno={{ x.plotno }}">yes</a></th></tr>
+{% endfor %}
+
+{% else  %}
+<h2 align="center" style="margin-top: 100px">NO DATA</h2>
+
+{% endif %}
+
+</table>
+</div>
+
+</body>
+</html>

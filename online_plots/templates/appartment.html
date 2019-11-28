@@ -1,0 +1,83 @@
+{% include 'header.html' %}
+<html>
+<body>
+<div style="margin-top: 50px">
+{% if newappartment %}
+<table  align="center">
+<form action="{% url 'saveapp' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<tr><th colspan="2" align="left">New Appartment Registration<br><br/></th></tr>
+<tr><td>Appartment no:</td><th><input type="number" name="t1"></th></tr>
+<tr><td>Floor no:</td><th><input type="number" name="t2"></th></tr>
+<tr><td>Survey no:</td><th><input type="number" name="t3"></th></tr>
+<tr><td>Cost per sq yard:</td><th><input id="k1" type="number" name="t4" ></th></tr>
+<tr><td>Total sq yard:</td><th><input id="k2" type="number" name="t5" ></th></tr>
+<tr><td>Other expences:</td><th><input id="k3" type="number" name="t6" ></th></tr>
+<tr><td>Facing:</td><th><select  name="t7">
+                              <option>North</option>
+                              <option>South</option>
+                              <option>East</option>
+                              <option>West</option>
+                         </select></th></tr>
+<tr><td>Status:</td><th><select  name="t8">
+                              <option>Sold</option>
+                              <option>Reserved</option>
+                              <option>Vacant</option>
+                         </select></th></tr>
+<tr><td>Total cost:</td><th><input id="k4" type="number" name="t9"></th></tr>
+<tr><td>Upload image:</td><th><input type="file" name="t10" style="width:70%;"></th></tr>
+    <tr><td align="right" colspan="2"> <input type="submit" value="save" style="background: green;border-color: green;width: 25%"></td></tr>
+    </form>
+</table>
+    <style>
+    select{
+        width:100%;
+    }
+    </style>
+
+{% endif %}
+
+
+
+{% if editappartment %}
+<h3 align="center"style="color: blue"> Welcome to Edit Appartment </h3>
+{% endif %}
+
+
+
+{% if viewappartment %}
+    <table align="center" width="100" border="2" cellpadding="4">
+    <tr><th>appno </th>
+        <th>floorno</th>
+        <th>surveyno</th>
+        <th>cost_p_sqyard</th>
+        <th>total_sqyard</th>
+        <th>other_exp</th>
+        <th>facing</th>
+        <th>status</th>
+        <th>total cost</th>
+        <th>image</th>
+        <th>delete</th></tr>
+    {% for x in viewappartment %}
+        <tr><th>{{ x.appno }}</th>
+        <th>{{ x.floorno }}</th>
+        <th>{{ x.surveyno }}</th>
+        <th>{{ x.cost_p_sqyard }}</th>
+        <th>{{ x.total_sqyard }}</th>
+        <th>{{ x.other_exp }}</th>
+        <th>{{ x.facing }}</th>
+        <th>{{ x.status }}</th>
+        <th>{{ x.total_cost }}</th>
+            <th><img src="{{ x.image.url }}" width="75" height="75"> </th>
+        <th><a href="{% url 'delapp' %}?appno={{ x.appno }}">yes</a></th></tr>
+    {% endfor %}
+
+    {% else %}
+    <h2 align="center" style="margin-top: 100px">NO DATA</h2>
+
+{% endif %}
+
+    </table>
+</div>
+</body>
+</html>

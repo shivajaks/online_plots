@@ -1,0 +1,56 @@
+{% include 'header.html' %}
+<html>
+<body>
+<div style="margin-top: 100px">
+{% if addemp %}
+<table align="center">
+<form action="{% url 'saveemp' %}" method="post">
+    {% csrf_token %}
+
+<tr><th colspan="2">ADD NEW EMPLOYEE<br><br/></th></tr>
+<tr><th>Employee name:</th><th><input type="text" name="t1" > </th></tr>
+<tr><th>Employee id:</th><th><input type="number" name="t2" > </th></tr>
+<tr><th>Employee Email:</th><th><input type="email" name="t3" > </th></tr>
+<tr><th>Employee Location:</th><th><input type="text" name="t4" > </th></tr>
+<tr><th>Employee DOJ</th><th><input type="date" name="t5"> </th></tr>
+<tr><th>Employee Remarks</th><th><select name="t6">
+                                    <option>Better</option>
+                                    <option>Average</option>
+                                    <option>Worst</option>
+                                 </select> </th></tr>
+    <tr><td align="right" colspan="2"><input type="submit" value="save"></td></tr>
+</form>
+</table>
+{% endif %}
+
+
+
+
+{% if viewemp %}
+<table align="center" width="800" border="2" cellpadding="4" >
+    <tr><th>idno </th>
+        <th>name</th>
+        <th>email</th>
+        <th>location</th>
+        <th>date of join</th>
+        <th>remark</th>
+        <th>delete</th></tr>
+{% for x in viewemp %}
+    <tr><th>{{ x.E_id }}</th>
+        <th>{{ x.E_name }}</th>
+        <th>{{ x.E_email }}</th>
+        <th>{{ x.E_location }}</th>
+        <th>{{ x.E_doj }}</th>
+        <th>{{ x.E_remark }}</th>
+        <th><a href="{% url 'delemp' %}?idno={{ x.E_id }}">yes</a></th></tr>
+{% endfor %}
+
+{% else  %}
+<h2 align="center" style="margin-top: 100px">NO DATA</h2>
+
+{% endif %}
+
+</table>
+</div>
+</body>
+</html>
